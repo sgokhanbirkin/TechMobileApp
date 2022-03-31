@@ -38,16 +38,16 @@ class AnswerView extends StatelessWidget {
                                     width: context.width * 2 / 4,
                                     decoration: BoxDecoration(
                                       borderRadius: context.highBorderRadius,
-                                      color: Colors.red,
+                                      color: Colors.pink.shade200,
                                     ),
                                     child: Container(
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.white,
                                       ),
                                       child: Icon(
                                         Icons.add,
-                                        color: Colors.red,
+                                        color: Colors.pink.shade200,
                                         size: context.width / 7,
                                       ),
                                     ),
@@ -59,7 +59,8 @@ class AnswerView extends StatelessWidget {
                                       borderRadius: context.highBorderRadius,
                                     ),
                                     child: Image.file(
-                                        context.read<AnswerCubit>().image!),
+                                      context.read<AnswerCubit>().image!,
+                                    ),
                                   ),
                             Container(
                               padding: context.paddingLow,
@@ -171,10 +172,13 @@ class AnswerView extends StatelessWidget {
                         ),
                       ),
                       CustomButton(
-                        text: 'Ekle',
+                        text: 'Add',
                         isLoading: false,
                         func: () {
-                          context.read<AnswerCubit>().pushAnswer(context);
+                          context.read<AnswerCubit>().pushAnswer(
+                                context,
+                                question,
+                              );
                         },
                       ),
                     ],

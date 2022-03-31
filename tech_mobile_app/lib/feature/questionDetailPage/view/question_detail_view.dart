@@ -1,15 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
 import 'package:tech_mobile_app/core/constant/models/answer_model.dart';
 import 'package:tech_mobile_app/feature/answerPage/view/answer_view.dart';
 import 'package:tech_mobile_app/feature/askQuestionPage/model/question_model.dart';
+import 'package:tech_mobile_app/product/comment_card.dart';
 import 'package:tech_mobile_app/product/custom_button.dart';
 
 class QuestionDetailView extends StatelessWidget {
   QuestionDetailView({
     Key? key,
     required this.question,
-    required this.answers,
   }) : super(key: key);
   Question? question;
   List<Answer>? answers;
@@ -27,12 +28,22 @@ class QuestionDetailView extends StatelessWidget {
             child: card(context),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: answers?.length ?? 0,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(answers?[index].title ?? ''),
+            child: StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('answers')
+                  .where('postId', isEqualTo: question?.postId)
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return ListView.builder(
+                  itemBuilder: (context, index) => CommentCard(
+                    snap: (snapshot.data! as dynamic).docs[index],
+                  ),
+                  itemCount: (snapshot.data! as dynamic).docs.length,
                 );
               },
             ),

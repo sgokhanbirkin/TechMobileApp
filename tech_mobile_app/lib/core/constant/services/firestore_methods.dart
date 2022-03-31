@@ -10,8 +10,16 @@ class FirestoreMethods {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   // upload post
-  Future<String> uploadPost(String description, File file, String id,
-      String username, String profImage, String category, String value) async {
+  Future<String> uploadPost(
+    String description,
+    File file,
+    String id,
+    String username,
+    String profImage,
+    String category,
+    String value,
+    String userId,
+  ) async {
     String res = "Some error occured";
     try {
       String photoUrl =
@@ -28,6 +36,7 @@ class FirestoreMethods {
         postUrl: photoUrl,
         value: value,
         category: category,
+        userId: userId,
       );
       print("PHOTO URL : : : " + photoUrl);
 

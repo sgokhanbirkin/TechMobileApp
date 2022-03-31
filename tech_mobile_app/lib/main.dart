@@ -5,6 +5,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'package:tech_mobile_app/core/constant/app/app_constants.dart';
 import 'package:tech_mobile_app/core/constant/language_manager.dart';
+import 'package:tech_mobile_app/core/constant/theme/app_theme.dart';
 import 'package:tech_mobile_app/core/providers/user_provider.dart';
 import 'package:tech_mobile_app/feature/askQuestionPage/view/ask_question_view.dart';
 import 'package:tech_mobile_app/feature/basketPage/view/basket_view.dart';
@@ -38,6 +39,7 @@ class MyApp extends StatelessWidget {
         title: 'Material App',
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
+        theme: ThemeManager.createTheme(AppThemeLight()),
         routes: {
           "/": (context) => LoginView(),
         },
@@ -81,14 +83,14 @@ class MyApp extends StatelessWidget {
               );
             case "myQuestionsPage":
               return PageTransition(
-                child: const MyQuestionsView(),
+                child: MyQuestionsView(),
                 type: PageTransitionType.fade,
                 settings: settings,
                 reverseDuration: const Duration(seconds: 0),
               );
             case "basketPage":
               return PageTransition(
-                child: const BasketView(),
+                child: BasketView(),
                 type: PageTransitionType.fade,
                 settings: settings,
                 reverseDuration: const Duration(seconds: 0),

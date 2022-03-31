@@ -11,7 +11,7 @@ class CustomButton extends StatefulWidget {
     required this.isLoading,
     required this.func,
   }) : super(key: key) {
-    color = Colors.red;
+    color = Colors.pink.shade200;
   }
 
   CustomButton.googleSignIn(

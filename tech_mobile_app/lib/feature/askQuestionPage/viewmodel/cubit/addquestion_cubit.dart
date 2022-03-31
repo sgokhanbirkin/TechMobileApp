@@ -66,12 +66,16 @@ class AddquestionCubit extends Cubit<AddquestionState> {
       name: questionTitle.text,
       postId: '',
       category: selectedCategory,
+      userId: '',
     );
     service.addQuestion(question, image!).whenComplete(
           () => Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(builder: ((context) => HomeView())),
-              (route) => false),
+            context,
+            MaterialPageRoute(
+              builder: ((context) => HomeView()),
+            ),
+            (route) => false,
+          ),
         );
     emit(AddQuestionComplate(image));
   }

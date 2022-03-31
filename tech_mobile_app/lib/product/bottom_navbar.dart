@@ -14,7 +14,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: context.height * 0.11,
+      height: context.height * 0.13,
       padding: EdgeInsets.only(top: context.height / 100),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -22,31 +22,31 @@ class _BottomNavbarState extends State<BottomNavbar> {
         children: [
           item(
             icon: Icons.home,
-            title: 'Anasayfa',
+            title: 'Home',
             pageName: "homePage",
             id: 0,
           ),
           item(
             icon: Icons.add,
-            title: 'Add Question',
+            title: 'Add',
             pageName: "askQuestionPage",
             id: 1,
           ),
           item(
             icon: Icons.shopping_basket,
-            title: 'Market',
+            title: 'Basket',
             pageName: "basketPage",
             id: 2,
           ),
           item(
             icon: Icons.person_add,
-            title: 'Sorularım',
+            title: 'Mines',
             pageName: "myQuestionsPage",
             id: 3,
           ),
           item(
             icon: Icons.person,
-            title: 'Profil',
+            title: 'Profile',
             pageName: "profilePage",
             id: 4,
           ),

@@ -7,14 +7,13 @@ class AppColors {
   final Color lighterGrey = const Color(0xfff0f4f8);
   final Color lightGrey = const Color(0xffdbe2ed);
   final Color darkGrey = const Color(0xff4e5d6a);
-
   final Color white = const Color(0xffffffff);
-  final Color red = const Color(0xffFD6666);
+  final Color red = const Color(0xffD6CCF9);
   final Color lunarbase = const Color(0xff868686);
   final Color black = const Color(0xff000000);
   final Color bleachedsilk = const Color(0xffF3F2F2);
   final Color nightblue = const Color(0xff6675FD);
-  final Color redremains = const Color(0xffFFE0E0);
+  final Color redremains = Colors.pink.shade200;
   final Color demonicyellow = const Color(0xffFFE600);
   final Color agedgrey = const Color(0xff7E7E7E);
   final Color lead = const Color(0xff212121);

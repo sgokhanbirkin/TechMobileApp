@@ -13,6 +13,7 @@ class Question {
   String? value;
   String? category;
   List<Answer>? answers = [];
+  String? userId;
   Question({
     required this.id,
     required this.description,
@@ -22,6 +23,7 @@ class Question {
     required this.value,
     required this.datePublished,
     required this.category,
+    required this.userId,
     this.answers,
   });
 
@@ -35,7 +37,8 @@ class Question {
       'value': value,
       'datePublished': datePublished,
       'category': category,
-      'answers': []
+      'answers': [],
+      'userId': userId,
     };
   }
 
@@ -49,6 +52,7 @@ class Question {
       value: map['value'],
       datePublished: map['datePublished'],
       category: map['category'],
+      userId: map['userId'],
       answers: map['answer']
           .map<Answer>((answer) => Answer.fromMap(answer))
           .toList(),
@@ -65,6 +69,7 @@ class Question {
         'datePublished': datePublished,
         'category': category,
         'answers': answers,
+        'userId': userId,
       };
 
   static Question fromSnap(DocumentSnapshot snap) {
@@ -78,6 +83,7 @@ class Question {
       value: snapshot['value'],
       datePublished: snapshot['datePublished'],
       category: snapshot['category'],
+      userId: snapshot['userId'],
       answers: snapshot['answer']
           .map<Answer>((answer) => Answer.fromMap(answer))
           .toList(),
@@ -100,5 +106,6 @@ class Question {
     value = json['value'];
     datePublished = json['datePublished'];
     category = json['category'];
+    userId = json['userId'];
   }
 }

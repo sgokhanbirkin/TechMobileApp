@@ -18,9 +18,8 @@ class HomeViewCubit extends Cubit<HomeViewState> {
 
   Future<void> _init() async {
     allQuestions = await HomeService().getListQuestions();
-    getAnswers();
     emit(
-      HomeViewComplate(allQuestions: allQuestions, answers: answers),
+      HomeViewComplate(allQuestions: allQuestions),
     );
   }
 

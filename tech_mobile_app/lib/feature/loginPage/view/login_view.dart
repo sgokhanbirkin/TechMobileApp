@@ -4,6 +4,8 @@ import 'package:kartal/kartal.dart';
 import 'package:provider/provider.dart';
 import 'package:tech_mobile_app/feature/homePage/view/home_view.dart';
 import 'package:tech_mobile_app/feature/loginPage/service/login_service.dart';
+import 'package:tech_mobile_app/feature/registerPage/view/register_view.dart';
+import 'package:tech_mobile_app/product/custom_button.dart';
 import 'package:tech_mobile_app/product/text_field_input.dart';
 
 class LoginView extends StatefulWidget {
@@ -29,18 +31,15 @@ class _LoginViewState extends State<LoginView> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Flexible(
-                child: Container(),
-                flex: 2,
-              ),
-              Flexible(
-                child: Text(
-                  'Giriş Yap',
-                  style: context.textTheme.headline3,
+                child: Container(
+                  decoration: const BoxDecoration(
+                      image: DecorationImage(
+                    image: NetworkImage(
+                        'https://cdn.discordapp.com/attachments/959151960299290634/959156280763760661/unknown.png'),
+                    fit: BoxFit.cover,
+                  )),
                 ),
-                flex: 1,
-              ),
-              SizedBox(
-                height: context.height * 0.05,
+                flex: 2,
               ),
               TextFieldInput(
                 textEditingController: _emailController,
@@ -59,8 +58,8 @@ class _LoginViewState extends State<LoginView> {
               SizedBox(
                 height: context.height * 0.05,
               ),
-              ElevatedButton(
-                onPressed: () async {
+              CustomButton(
+                func: () async {
                   try {
                     final user = await Provider.of<LoginService>(context,
                             listen: false)
@@ -73,19 +72,31 @@ class _LoginViewState extends State<LoginView> {
                         (route) => false);
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
-                      _showErrorDialog('E-Mail adresi bulunamadı.',
-                          'Lütfen E-Mail adresinizi kontrol ediniz ve tekrar deneyiniz.');
+                      _showErrorDialog('Mail is not found.',
+                          'Please check your mail and try again.');
                     } else if (e.code == 'wrong-password') {
-                      _showErrorDialog('Şifre yanlış',
-                          'Lütfen şifrenizi kontrol ediniz ve tekrar deneyiniz.');
+                      _showErrorDialog('Wrong password',
+                          'Please check your password and try again.');
                     } else {
                       _showErrorDialog(
-                          'Bir hata oluştu', 'Lütfen tekrar deneyiniz.');
+                          'Unkown Fail', 'Please try again later.');
                     }
                   }
                 },
-                child: Text('Giriş Yap'),
+                text: 'Login',
+                isLoading: _isLoading,
               ),
+              CustomButton(
+                  text: 'Create a account',
+                  isLoading: false,
+                  func: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => RegisterView(),
+                      ),
+                    );
+                  }),
             ],
           ),
         ),
@@ -99,7 +110,7 @@ class _LoginViewState extends State<LoginView> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('HATA'),
+          title: const Text('Fail'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[

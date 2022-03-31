@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:kartal/kartal.dart';
+import 'package:tech_mobile_app/feature/loginPage/view/login_view.dart';
 import 'package:tech_mobile_app/feature/registerPage/viewmodel/cubit/register_cubit.dart';
+import 'package:tech_mobile_app/product/custom_button.dart';
 import 'package:tech_mobile_app/product/custom_text_form_field.dart';
 
 class RegisterView extends StatefulWidget {
@@ -119,7 +121,7 @@ class _RegisterViewState extends State<RegisterView> {
                         ),
                         SizedBox(height: context.height * 0.02),
                         SizedBox(
-                          height: context.height * 0.02,
+                          height: context.height * 0.05,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -172,14 +174,24 @@ class _RegisterViewState extends State<RegisterView> {
                         BlocConsumer<RegisterCubit, RegisterState>(
                           listener: (context, state) {},
                           builder: (context, state) {
-                            return ElevatedButton(
-                              onPressed: () {
+                            return CustomButton(
+                              func: () {
                                 context.read<RegisterCubit>().register(context);
                               },
-                              child: Text('Register'),
+                              text: 'Register',
+                              isLoading: false,
                             );
                           },
                         ),
+                        CustomButton(
+                            text: 'Go to Login Page',
+                            isLoading: false,
+                            func: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginView()));
+                            })
                       ],
                     ),
                   ),
@@ -192,38 +204,3 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 }
-/**
- * SizedBox(
-                        height: context.height * 0.02,
-                        child: Row(
-                          children: [
-                            ListTile(
-                              title: Text('Teacher'),
-                              leading: Radio(
-                                value: 'teacher',
-                                groupValue:
-                                    context.read<RegisterCubit>().isTeacher
-                                        ? 'teacher'
-                                        : 'student',
-                                onChanged: (value) {
-                                  context.read<RegisterCubit>().changeRadio();
-                                },
-                              ),
-                            ),
-                            ListTile(
-                              title: Text('Student'),
-                              leading: Radio(
-                                value: 'student',
-                                groupValue:
-                                    context.read<RegisterCubit>().isTeacher
-                                        ? 'teacher'
-                                        : 'student',
-                                onChanged: (value) {
-                                  context.read<RegisterCubit>().changeRadio();
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
- */

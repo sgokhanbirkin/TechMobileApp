@@ -29,20 +29,6 @@ class HomeView extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  Container(
-                      height: context.height * 0.05,
-                      child: Column(
-                        children: [
-                          Text('Kategoriler'),
-                          Row(
-                            children: [
-                              Text('1'),
-                              Text('2'),
-                              Text('3'),
-                            ],
-                          ),
-                        ],
-                      )),
                   Expanded(
                       child: allQuestions(
                           context, context.read<HomeViewCubit>().allQuestions)),
@@ -67,13 +53,13 @@ class HomeView extends StatelessWidget {
           title: questions?[index].name,
           url: questions?[index].postUrl ?? '',
           value: questions?[index].value,
+          date: questions?[index].datePublished,
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => QuestionDetailView(
                   question: questions?[index],
-                  answers: context.read<HomeViewCubit>().answers,
                 ),
               ),
             );

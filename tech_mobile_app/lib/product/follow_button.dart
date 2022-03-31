@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 
 class FollowButton extends StatelessWidget {
   final Function()? function;
@@ -18,7 +19,6 @@ class FollowButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(28),
       child: TextButton(
         onPressed: function,
         child: Container(
@@ -30,10 +30,14 @@ class FollowButton extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               text,
-              style: TextStyle(color: textColor, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                color: textColor,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
             ),
-            width: 200,
-            height: 27),
+            width: context.width * 0.8,
+            height: context.height * .04),
       ),
     );
   }

@@ -54,7 +54,7 @@ class _AskQuestionViewState extends State<AskQuestionView> {
                                     width: context.width * 2 / 4,
                                     decoration: BoxDecoration(
                                       borderRadius: context.highBorderRadius,
-                                      color: Colors.red,
+                                      color: Colors.pink.shade200,
                                     ),
                                     child: Container(
                                       decoration: BoxDecoration(
@@ -63,7 +63,7 @@ class _AskQuestionViewState extends State<AskQuestionView> {
                                       ),
                                       child: Icon(
                                         Icons.add,
-                                        color: Colors.red,
+                                        color: Colors.pink.shade200,
                                         size: context.width / 7,
                                       ),
                                     ),
@@ -163,7 +163,7 @@ class _AskQuestionViewState extends State<AskQuestionView> {
                               maxLines: 1,
                               decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.all(20.0),
-                                hintText: 'Adı',
+                                hintText: 'Title',
                                 hintStyle:
                                     Theme.of(context).textTheme.bodySmall,
                                 enabledBorder: const OutlineInputBorder(
@@ -199,7 +199,7 @@ class _AskQuestionViewState extends State<AskQuestionView> {
                               maxLines: 1,
                               decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.all(20.0),
-                                hintText: 'Puanı',
+                                hintText: 'Value',
                                 hintStyle:
                                     Theme.of(context).textTheme.bodySmall,
                                 enabledBorder: const OutlineInputBorder(
@@ -235,7 +235,7 @@ class _AskQuestionViewState extends State<AskQuestionView> {
                               maxLines: 4,
                               decoration: InputDecoration(
                                 contentPadding: const EdgeInsets.all(20.0),
-                                hintText: 'Açıklama',
+                                hintText: 'Description',
                                 hintStyle:
                                     Theme.of(context).textTheme.bodySmall,
                                 enabledBorder: const OutlineInputBorder(
@@ -254,7 +254,7 @@ class _AskQuestionViewState extends State<AskQuestionView> {
                             ),
                           ),
                           CustomButton(
-                            text: 'Ekle',
+                            text: 'Add',
                             isLoading: false,
                             func: () {
                               context

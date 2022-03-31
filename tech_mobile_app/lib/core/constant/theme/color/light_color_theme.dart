@@ -31,12 +31,12 @@ class LightColors implements IColors {
     scaffoldBackgroundColor = colors.white;
     tabBarColor = colors.red;
     tabbarNormalColor = colors.darkerGrey;
-    tabbarSelectedColor = colors.red;
+    tabbarSelectedColor = Colors.pink.shade200;
 
-    buttonNormalColor = colors.red;
+    buttonNormalColor = Colors.pink.shade200;
     buttonGoogleColor = colors.nightblue;
     colorScheme = const ColorScheme.light().copyWith(
-      onPrimary: colors.red, //xx Her ikisinde ortaktır
+      onPrimary: Colors.pink.shade200, //xx Her ikisinde ortaktır
       onSecondary: colors.white,
       onSurface: colors.mediumGreyBold,
     );

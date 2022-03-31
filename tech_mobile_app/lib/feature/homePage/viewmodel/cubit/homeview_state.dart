@@ -7,6 +7,8 @@ class HomeViewInitial extends HomeViewState {}
 
 class HomeViewComplate extends HomeViewState {
   final List<Question>? allQuestions;
-  final List<Answer>? answers;
-  HomeViewComplate({this.allQuestions, this.answers});
+
+  HomeViewComplate({
+    this.allQuestions,
+  });
 }

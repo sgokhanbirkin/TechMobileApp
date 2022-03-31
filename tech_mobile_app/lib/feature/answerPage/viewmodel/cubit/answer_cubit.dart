@@ -4,9 +4,9 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:meta/meta.dart';
 import 'package:tech_mobile_app/core/constant/models/answer_model.dart';
 import 'package:tech_mobile_app/feature/answerPage/service/answer_service.dart';
+import 'package:tech_mobile_app/feature/askQuestionPage/model/question_model.dart';
 import 'package:tech_mobile_app/feature/homePage/view/home_view.dart';
 
 part 'answer_state.dart';
@@ -46,24 +46,27 @@ class AnswerCubit extends Cubit<AnswerState> {
     emit(AddAnswerState(image: image!));
   }
 
-  Future<void> pushAnswer(BuildContext context) async {
+  Future<void> pushAnswer(BuildContext context, Question? question) async {
     final user = await FirebaseAuth.instance.currentUser!;
 
     AnswerService service = AnswerService();
     Answer answer = Answer(
       id: user.uid,
       answerUrl: image?.path,
-      postId: "",
+      postId: question?.postId,
       title: answerTitle.text,
       description: answerDescription.text,
     );
+
     service
         .postComment(
-            answerUrl: image?.path ?? "",
-            postId: "",
-            title: answerTitle.text,
-            description: answerDescription.text,
-            uid: user.uid)
+          answerUrl: image!.path,
+          postId: question?.postId,
+          title: answerTitle.text,
+          description: answerDescription.text,
+          file: image!,
+          uid: user.uid,
+        )
         .whenComplete(
           () => Navigator.pushAndRemoveUntil(
               context,
