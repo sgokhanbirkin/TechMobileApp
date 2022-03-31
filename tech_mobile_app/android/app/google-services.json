@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "699173375005",
+    "project_id": "tech-mobile-84eef",
+    "storage_bucket": "tech-mobile-84eef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699173375005:android:23a7bedae6982d1af08af4",
+        "android_client_info": {
+          "package_name": "com.example.tech_mobile_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "699173375005-4gej4brvvfst7mso70rib8vsish8s4ok.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF5YcNSNb6v9bdQkfZbhapQIQyBFLiKwI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "699173375005-4gej4brvvfst7mso70rib8vsish8s4ok.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
